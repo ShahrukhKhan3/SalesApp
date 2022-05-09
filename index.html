@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+
+    <style>
+
+      body {
+
+        width: 80%;
+
+        margin: auto;
+
+      }
+
+      h1 {
+
+        text-align: center;
+
+        color: coral;
+
+      }
+
+      .first-page {
+
+        display: block;
+
+        margin-top: 100px;
+
+      }
+
+      .first-page-content {
+
+        display: flex;
+
+        justify-content: space-evenly;
+
+      }
+
+      .second-page {
+
+        display: none;
+
+        margin-top: 100px;
+
+      }
+
+      button {
+
+        background-color: lightseagreen;
+
+        border: 1px solid lightseagreen;
+
+        color: white;
+
+        padding: 5px 0px;
+
+        width: 150px;
+
+        cursor: pointer;
+
+        margin-bottom: 50px;
+
+      }
+
+      button:hover {
+
+        background-color: white;
+
+        color: lightseagreen;
+
+        transition: 0.5s ease;
+
+      }
+
+      .input-buttons {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: space-between;
+
+      }
+
+      .function-buttons {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: space-evenly;
+
+      }
+
+      .function-buttons button,
+
+      .second-page button {
+
+        padding: 15px 0px;
+
+        background-color: coral;
+
+        border: 1px solid coral;
+
+      }
+
+      .function-buttons button:hover,
+
+      .second-page button:hover {
+
+        background-color: white;
+
+      }
+
+      .buttons {
+
+        width: 50%;
+
+      }
+
+      .info {
+
+        width: 50%;
+
+        padding-left: 30px;
+
+      }
+
+      .info h3 {
+
+        text-align: center;
+
+      }
+
+      table,
+
+      td,
+
+      th {
+
+        border: 1px solid coral;
+
+        border-collapse: collapse;
+
+      }
+
+      td {
+
+        text-align: center;
+
+      }
+
+      td,
+
+      th {
+
+        padding: 15px;
+
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <hr />
+
+    <h1>Coffee Shop</h1>
+
+    <hr />
+
+    <div class="first-page">
+
+      <div class="first-page-content">
+
+        <div class="buttons">
+
+          <div class="input-buttons">
+
+            <button onclick="buyFirstCoffee()">Buy Regular Coffee</button>
+
+            <button onclick="buySecondCoffee()">
+
+              Buy Decaffeinated Coffee
+
+            </button>
+
+            <button onclick="buyThirdCoffee()">Buy Mocha Coffee</button>
+
+          </div>
+
+          <div class="function-buttons">
+
+            <button onclick="displayTotal()">Continue</button>
+
+            <button onclick="reset()">Reset</button>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="info">
+
+          <h3 id="quantity1"></h3>
+
+          <h3 id="quantity2"></h3>
+
+          <h3 id="quantity3"></h3>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="second-page">
+
+      <table>
+
+        <tr>
+
+          <th>Coffee Name</th>
+
+          <th>Quantity</th>
+
+          <th>Price per Unit</th>
+
+          <th>Total Price</th>
+
+        </tr>
+
+        <tr>
+
+          <td>Regular Coffee</td>
+
+          <td class="quantity1">0</td>
+
+          <td>9</td>
+
+          <td class="first-price">0</td>
+
+        </tr>
+
+        <tr>
+
+          <td>Decaffeinated Coffee</td>
+
+          <td class="quantity2">0</td>
+
+          <td>8</td>
+
+          <td class="second-price">0</td>
+
+        </tr>
+
+        <tr>
+
+          <td>Mocha Coffee</td>
+
+          <td class="quantity3">0</td>
+
+          <td>11</td>
+
+          <td class="third-price">0</td>
+
+        </tr>
+
+      </table>
+
+      <h3 id="total-price"></h3>
+
+      <h3 id="discount"></h3>
+
+      <h3 id="disc-price"></h3>
+
+      <button onclick="back()">Back to First Page?</button>
+
+    </div>
+
+
+
+    <script>
+
+      var firstPrice = 9;
+
+      var secondPrice = 8;
+
+      var thirdPrice = 11;
+
+      var totalPrice = 0;
+
+
+
+      function buyFirstCoffee() {
+
+        var quantity = 0,
+
+          price = 0;
+
+        quantity = prompt("Enter Quantity of Regular Cofee:");
+
+        if (quantity > 0) {
+
+          price = quantity * 9;
+
+          totalPrice += price;
+
+          document.getElementById(
+
+            "quantity1"
+
+          ).innerHTML = `Quantity of Regular Coffee: ${quantity}`;
+
+          document.querySelector(".quantity1").innerHTML = quantity;
+
+          document.querySelector(".first-price").innerHTML = price;
+
+        } else {
+
+          alert("Quantity must be greater than 0!");
+
+          buyFirstCoffee();
+
+        }
+
+      }
+
+
+
+      function buySecondCoffee() {
+
+        var quantity = 0,
+
+          price = 0;
+
+        quantity = prompt("Enter Quantity of Decaffeinated Cofee:");
+
+        if (quantity > 0) {
+
+          price = quantity * 8;
+
+          totalPrice += price;
+
+          document.getElementById(
+
+            "quantity2"
+
+          ).innerHTML = `Quantity of Decaffeinated Coffee: ${quantity}`;
+
+          document.querySelector(".quantity2").innerHTML = quantity;
+
+          document.querySelector(".second-price").innerHTML = price;
+
+        } else {
+
+          alert("Quantity must be greater than 0!");
+
+          buySecondCoffee();
+
+        }
+
+      }
+
+
+
+      function buyThirdCoffee() {
+
+        var quantity = 0,
+
+          price = 0;
+
+        quantity = prompt("Enter Quantity of Mocha Cofee:");
+
+        if (quantity > 0) {
+
+          price = quantity * 11;
+
+          totalPrice += price;
+
+          document.getElementById(
+
+            "quantity3"
+
+          ).innerHTML = `Quantity of Mocha Coffee: ${quantity}`;
+
+          document.querySelector(".quantity3").innerHTML = quantity;
+
+          document.querySelector(".third-price").innerHTML = price;
+
+        } else {
+
+          alert("Quantity must be greater than 0!");
+
+          buyThirdCoffee();
+
+        }
+
+      }
+
+
+
+      function displayTotal() {
+
+        document.querySelector(".first-page").style.display = "none";
+
+        document.querySelector(".second-page").style.display = "block";
+
+        document.getElementById(
+
+          "total-price"
+
+        ).innerHTML = `Total Price: Rs. ${totalPrice}`;
+
+        if (totalPrice >= 100) {
+
+          document.getElementById("discount").innerHTML = `Discount: Rs. 15`;
+
+          totalPrice -= 15;
+
+          document.getElementById(
+
+            "disc-price"
+
+          ).innerHTML = `Price after Discount: Rs. ${totalPrice}`;
+
+        } else {
+
+          document.getElementById("discount").innerHTML = "";
+
+          document.getElementById("disc-price").innerHTML = ``;
+
+        }
+
+      }
+
+
+
+      function back() {
+
+        document.querySelector(".first-page").style.display = "block";
+
+        document.querySelector(".second-page").style.display = "none";
+
+      }
+
+
+
+      function reset() {
+
+        totalPrice = 0;
+
+        document.getElementById("quantity1").innerHTML = "";
+
+        document.getElementById("quantity2").innerHTML = "";
+
+        document.getElementById("quantity3").innerHTML = "";
+
+        document.querySelector(".quantity1").innerHTML = "0";
+
+        document.querySelector(".quantity2").innerHTML = "0";
+
+        document.querySelector(".quantity3").innerHTML = "0";
+
+        document.querySelector(".first-price").innerHTML = "0";
+
+        document.querySelector(".second-price").innerHTML = "0";
+
+        document.querySelector(".third-price").innerHTML = "0";
+
+      }
+
+    </script>
+
+  </body>
+
+</html>
